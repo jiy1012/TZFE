@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "DWSScene.h"
 
 USING_NS_CC;
 
@@ -27,6 +28,17 @@ bool HelloWorld::init()
         return false;
     }
     
+    auto DWSSprite = DWSScene::shared()->DWSLogoDisplay();
+    
+    FadeOut* pFadeout = FadeOut::create(3.0f);
+    auto pSequence = Sequence::create(
+                                      pFadeout,
+                                      CallFuncN::create(CC_CALLBACK_0(HelloWorld::logoDisplayCallback,this)),
+                                      NULL);
+    DWSSprite->runAction(pSequence);
+    this->addChild(DWSSprite, 0);
+    
+    /*
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -38,7 +50,7 @@ bool HelloWorld::init()
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+                                           _CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
 	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
                                 origin.y + closeItem->getContentSize().height/2));
@@ -71,21 +83,68 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
+    */
     return true;
 }
+void HelloWorld::logoDisplayCallback()
+{
+    CCLOG("%s","logoDisplayCallback pNode");
+    auto pMydraw = Sprite::create("mydraw.jpg");
+    pMydraw->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/2));
+    
+    float expire = 1.5f;
 
+    
+    FadeIn* pFadein = FadeIn::create(expire);
+    DelayTime* pDelay = DelayTime::create(expire);
+    FadeOut* pFadeout = FadeOut::create(expire);
+    
+    auto pSequence = Sequence::create(
+                                      pFadein,
+                                      pDelay,
+                                      pFadeout,
+                                      CallFuncN::create( CC_CALLBACK_0(HelloWorld::sloganDisplayCallback,this)),
+                                   NULL);
+    pMydraw->runAction(pSequence);
+    this->addChild(pMydraw);
+}
+
+void HelloWorld::sloganDisplayCallback()
+{
+    CCLOG("%s","sloganDisplayCallback");
+    auto pLabel = LabelTTF::create("四火品质 坚如磐石", "", 50);
+    
+    pLabel->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/2));
+    
+    float expire = 1.5f;
+
+    
+    FadeIn* pFadein = FadeIn::create(expire);
+    FadeOut* pFadeout = FadeOut::create(expire);
+    auto pSequence = Sequence::create(
+                                      pFadein,
+                                      pFadeout,
+                                      CallFunc::create(CC_CALLBACK_0(HelloWorld::titleDisplayCallback,this)),
+                                      NULL);
+    pLabel->runAction(pSequence);
+    this->addChild(pLabel);
+}
+
+void HelloWorld::titleDisplayCallback()
+{
+    CCLOG("");
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+#if (_TARGET_PLATFORM == _PLATFORM_WP8) || (_TARGET_PLATFORM == _PLATFORM_WINRT)
 	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
     return;
 #endif
 
     Director::getInstance()->end();
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#if (_TARGET_PLATFORM == _PLATFORM_IOS)
     exit(0);
 #endif
 }

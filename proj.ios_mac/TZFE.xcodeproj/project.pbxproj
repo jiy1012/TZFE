@@ -68,6 +68,26 @@
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
+		D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
+		D699843B1986B18300D349BE /* DWS.LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984321986B18300D349BE /* DWS.LOGO.png */; };
+		D699843C1986B18300D349BE /* DWS.LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984321986B18300D349BE /* DWS.LOGO.png */; };
+		D699843D1986B18300D349BE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = D69984331986B18300D349BE /* fonts */; };
+		D699843E1986B18300D349BE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = D69984331986B18300D349BE /* fonts */; };
+		D699843F1986B18300D349BE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984341986B18300D349BE /* Icon-72.png */; };
+		D69984401986B18300D349BE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984341986B18300D349BE /* Icon-72.png */; };
+		D69984411986B18300D349BE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984351986B18300D349BE /* Icon-Small-50.png */; };
+		D69984421986B18300D349BE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984351986B18300D349BE /* Icon-Small-50.png */; };
+		D69984431986B18300D349BE /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984361986B18300D349BE /* Icon-Small.png */; };
+		D69984441986B18300D349BE /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984361986B18300D349BE /* Icon-Small.png */; };
+		D69984451986B18300D349BE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984371986B18300D349BE /* Icon-Small@2x.png */; };
+		D69984461986B18300D349BE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984371986B18300D349BE /* Icon-Small@2x.png */; };
+		D69984471986B18300D349BE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984381986B18300D349BE /* Icon.png */; };
+		D69984481986B18300D349BE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984381986B18300D349BE /* Icon.png */; };
+		D69984491986B18300D349BE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984391986B18300D349BE /* Icon@2x.png */; };
+		D699844A1986B18300D349BE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D69984391986B18300D349BE /* Icon@2x.png */; };
+		D699844B1986B18300D349BE /* mydraw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D699843A1986B18300D349BE /* mydraw.jpg */; };
+		D699844C1986B18300D349BE /* mydraw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D699843A1986B18300D349BE /* mydraw.jpg */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
@@ -266,6 +286,19 @@
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D62463DA1986A506009B8067 /* DefinedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinedBase.h; path = ../Classes/DefinedBase.h; sourceTree = "<group>"; };
+		D62463DB1986A506009B8067 /* DWSScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DWSScene.cpp; path = ../Classes/DWSScene.cpp; sourceTree = "<group>"; };
+		D62463DC1986A506009B8067 /* DWSScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSScene.h; path = ../Classes/DWSScene.h; sourceTree = "<group>"; };
+		D62463E11986A669009B8067 /* CommonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonConfig.h; path = ../Classes/CommonConfig.h; sourceTree = "<group>"; };
+		D69984321986B18300D349BE /* DWS.LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DWS.LOGO.png; sourceTree = "<group>"; };
+		D69984331986B18300D349BE /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		D69984341986B18300D349BE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		D69984351986B18300D349BE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		D69984361986B18300D349BE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		D69984371986B18300D349BE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		D69984381986B18300D349BE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D69984391986B18300D349BE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D699843A1986B18300D349BE /* mydraw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mydraw.jpg; sourceTree = "<group>"; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -336,6 +369,10 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D62463E11986A669009B8067 /* CommonConfig.h */,
+				D62463DA1986A506009B8067 /* DefinedBase.h */,
+				D62463DB1986A506009B8067 /* DWSScene.cpp */,
+				D62463DC1986A506009B8067 /* DWSScene.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -455,6 +492,15 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D69984321986B18300D349BE /* DWS.LOGO.png */,
+				D69984331986B18300D349BE /* fonts */,
+				D69984341986B18300D349BE /* Icon-72.png */,
+				D69984351986B18300D349BE /* Icon-Small-50.png */,
+				D69984361986B18300D349BE /* Icon-Small.png */,
+				D69984371986B18300D349BE /* Icon-Small@2x.png */,
+				D69984381986B18300D349BE /* Icon.png */,
+				D69984391986B18300D349BE /* Icon@2x.png */,
+				D699843A1986B18300D349BE /* mydraw.jpg */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -516,7 +562,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = MDDB52YB8L;
@@ -629,12 +675,19 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				D69984411986B18300D349BE /* Icon-Small-50.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				D699843F1986B18300D349BE /* Icon-72.png in Resources */,
+				D699843D1986B18300D349BE /* fonts in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				D69984431986B18300D349BE /* Icon-Small.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				D69984491986B18300D349BE /* Icon@2x.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				D699844B1986B18300D349BE /* mydraw.jpg in Resources */,
+				D699843B1986B18300D349BE /* DWS.LOGO.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -642,9 +695,11 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				D69984471986B18300D349BE /* Icon.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				D69984451986B18300D349BE /* Icon-Small@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,9 +709,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
+				D699844A1986B18300D349BE /* Icon@2x.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
+				D69984461986B18300D349BE /* Icon-Small@2x.png in Resources */,
+				D699843E1986B18300D349BE /* fonts in Resources */,
+				D699843C1986B18300D349BE /* DWS.LOGO.png in Resources */,
+				D69984421986B18300D349BE /* Icon-Small-50.png in Resources */,
+				D69984401986B18300D349BE /* Icon-72.png in Resources */,
+				D699844C1986B18300D349BE /* mydraw.jpg in Resources */,
+				D69984481986B18300D349BE /* Icon.png in Resources */,
 				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
+				D69984441986B18300D349BE /* Icon-Small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -680,6 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 			);
@@ -805,9 +871,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -835,9 +901,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
