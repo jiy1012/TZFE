@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "DWSScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -30,7 +31,7 @@ bool HelloWorld::init()
     
     auto DWSSprite = DWSScene::shared()->DWSLogoDisplay();
     
-    FadeOut* pFadeout = FadeOut::create(3.0f);
+    FadeOut* pFadeout = FadeOut::create(1.0f);
     auto pSequence = Sequence::create(
                                       pFadeout,
                                       CallFuncN::create(CC_CALLBACK_0(HelloWorld::logoDisplayCallback,this)),
@@ -92,7 +93,7 @@ void HelloWorld::logoDisplayCallback()
     auto pMydraw = Sprite::create("mydraw.jpg");
     pMydraw->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/2));
     
-    float expire = 1.5f;
+    float expire = 0.5f;
 
     
     FadeIn* pFadein = FadeIn::create(expire);
@@ -112,11 +113,11 @@ void HelloWorld::logoDisplayCallback()
 void HelloWorld::sloganDisplayCallback()
 {
     CCLOG("%s","sloganDisplayCallback");
-    auto pLabel = LabelTTF::create("四火品质 坚如磐石", "", 50);
+    auto pLabel = LabelTTF::create("神马品质 坚如磐石", "", 50);
     
     pLabel->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/2));
     
-    float expire = 1.5f;
+    float expire = 0.5f;
 
     
     FadeIn* pFadein = FadeIn::create(expire);
@@ -132,8 +133,32 @@ void HelloWorld::sloganDisplayCallback()
 
 void HelloWorld::titleDisplayCallback()
 {
+    
     CCLOG("");
+    auto title = LabelTTF::create("2048", "", 200);
+    title->setPosition(Vec2(WIN_WIDTH/2,WIN_HEIGHT/2));
+    this->addChild(title);
+    
+    auto pStratButton = MenuItemImage::create("startButton.png", "startButtonSelected.png",
+                                              CC_CALLBACK_1(HelloWorld::startGame,this));
+    pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/6));
+    
+    auto pExitButton = MenuItemImage::create("exitButton.png", "exitButtonSelected.png",CC_CALLBACK_1(HelloWorld::menuCloseCallback,this));
+    pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/6));
+    
+    auto pMenu = Menu::create(pStratButton,pExitButton,NULL);
+    pMenu->setPosition( Vec2(0, 0) );
+    this->addChild(pMenu, 1);
 }
+
+
+void HelloWorld::startGame(cocos2d::Ref* pSender)
+{
+    CCLOG("start game");
+    auto gameScene = GameScene::createScene();
+    Director::getInstance()->pushScene(gameScene);
+}
+
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
