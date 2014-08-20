@@ -66,7 +66,7 @@ void HelloWorld::logoDisplayCallback()
 void HelloWorld::sloganDisplayCallback()
 {
     CCLOG("%s","sloganDisplayCallback");
-    auto pLabel = LabelTTF::create("神马品质 坚如磐石", "", 50);
+    auto pLabel = LabelTTF::create("神马品质\n坚如磐石", "", 50);
     
     pLabel->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/2));
     
@@ -89,16 +89,16 @@ void HelloWorld::titleDisplayCallback()
     float scale = MIN(WIN_WIDTH/1024,WIN_HEIGHT/768);
     
     auto title = LabelTTF::create("NUMBER", "", 200);
-    title->setPosition(Vec2(WIN_WIDTH/2,WIN_HEIGHT/2));
+    title->setPosition(Vec2(WIN_WIDTH/2,WIN_HEIGHT*2/3));
     title->setScale(scale);
     this->addChild(title);
     
     auto pStratButton = MenuItemImage::create("startButton.png", "startButtonSelected.png",
                                               CC_CALLBACK_1(HelloWorld::startGame,this));
-    pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/6));
+    pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/4));
     pStratButton->setScale(scale);
     auto pExitButton = MenuItemImage::create("exitButton.png", "exitButtonSelected.png",CC_CALLBACK_1(HelloWorld::menuCloseCallback,this));
-    pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/6));
+    pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/4));
     pExitButton->setScale(scale);
     auto pMenu = Menu::create(pStratButton,pExitButton,NULL);
     pMenu->setPosition( Vec2(0, 0) );
