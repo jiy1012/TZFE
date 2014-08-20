@@ -7,9 +7,8 @@ import os, os.path
 import shutil
 from optparse import OptionParser
 
-CPP_SAMPLES = ['cpp-empty-test', 'cpp-tests','TZFE']
-LUA_SAMPLES = ['lua-empty-test', 'lua-tests']
-ALL_SAMPLES = CPP_SAMPLES + LUA_SAMPLES
+CPP_SAMPLES = ['TZFE']
+ALL_SAMPLES = CPP_SAMPLES
 
 def get_num_of_cpu():
     ''' The build process can be accelerated by running multiple concurrent job processes using the -j-option.
@@ -155,39 +154,8 @@ def copy_resources(target, app_android_root):
             copy_files(resources_dir, assets_dir)
 
 
-    # lua samples should copy lua script
-    if target in LUA_SAMPLES:
-        resources_dir = os.path.join(app_android_root, "../../res")
-        assets_res_dir = os.path.join(assets_dir, "res")
-        os.mkdir(assets_res_dir)
 
-        if target != "lua-tests":
-            copy_files(resources_dir, assets_res_dir)
 
-        src_dir = os.path.join(app_android_root, "../../src")
-        assets_src_dir = os.path.join(assets_dir, "src")
-        os.mkdir(assets_src_dir)
-        copy_files(src_dir, assets_src_dir)
-
-        common_script_dir = os.path.join(app_android_root, "../../../../cocos/scripting/lua-bindings/script")
-        copy_files(common_script_dir, assets_dir)
-
-        luasocket_script_dir = os.path.join(app_android_root, "../../../../external/lua/luasocket")
-        for root, dirs, files in os.walk(luasocket_script_dir):
-            for f in files:
-                if os.path.splitext(f)[1] == '.lua':
-                    fall = os.path.join(root, f)
-                    shutil.copy(fall, assets_dir)
-
-        # lua-tests shared resources with cpp-tests
-        if target == "lua-tests":
-            resources_cocosbuilder_res_dir = os.path.join(resources_dir, "cocosbuilderRes")
-            assets_cocosbuilder_res_dir = os.path.join(assets_res_dir, "cocosbuilderRes")
-            os.mkdir(assets_cocosbuilder_res_dir)
-            copy_files(resources_cocosbuilder_res_dir, assets_cocosbuilder_res_dir)
-
-            resources_dir = os.path.join(app_android_root, "../../../cpp-tests/Resources")
-            copy_files(resources_dir, assets_res_dir)
 
 def build_samples(target,ndk_build_param,android_platform,build_mode):
 
@@ -214,23 +182,10 @@ def build_samples(target,ndk_build_param,android_platform,build_mode):
 
     app_android_root = ''
 
-    target_proj_path_map = {
-        "cpp-empty-test": "tests/cpp-empty-test/proj.android",
-        "cpp-tests": "tests/cpp-tests/proj.android",
-        "lua-empty-test": "tests/lua-empty-test/project/proj.android",
-        "lua-tests": "tests/lua-tests/project/proj.android",
-        "TZFE": "../proj.android"
-    }
+    pp_android_root = os.path.join(cocos_root, "../proj.android")
 
-    for target in build_targets:
-        if target in target_proj_path_map:
-            app_android_root = os.path.join(cocos_root, target_proj_path_map[target])
-        else:
-            print 'unknown target: %s' % target
-            continue
-
-        copy_resources(target, app_android_root)
-        do_build(cocos_root, ndk_root, app_android_root, ndk_build_param,sdk_root,android_platform,build_mode)
+    copy_resources(target, app_android_root)
+    do_build(cocos_root, ndk_root, app_android_root, ndk_build_param,sdk_root,android_platform,build_mode)
 
 # -------------- main --------------
 if __name__ == '__main__':
@@ -265,7 +220,7 @@ if __name__ == '__main__':
         sys.exit(1)
     else:
         try:
-            build_samples(args, opts.ndk_build_param,opts.android_platform,opts.build_mode)
+            build_samples("TZFE", opts.ndk_build_param,opts.android_platform,opts.build_mode)
         except Exception as e:
             print e
             sys.exit(1)
