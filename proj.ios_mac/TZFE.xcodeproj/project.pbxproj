@@ -102,8 +102,6 @@
 		D69DCCAD198CCA3300162510 /* exitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D69DCCAB198CCA3300162510 /* exitButton.png */; };
 		D69DCCB0198CCC5C00162510 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69DCCAE198CCC5C00162510 /* GameScene.cpp */; };
 		D69DCCB1198CCC5C00162510 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69DCCAE198CCC5C00162510 /* GameScene.cpp */; };
-		D6A15904198CD6BE0023AB47 /* CardSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A15902198CD6BE0023AB47 /* CardSprite.cpp */; };
-		D6A15905198CD6BE0023AB47 /* CardSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A15902198CD6BE0023AB47 /* CardSprite.cpp */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
@@ -323,8 +321,6 @@
 		D69DCCAB198CCA3300162510 /* exitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exitButton.png; sourceTree = "<group>"; };
 		D69DCCAE198CCC5C00162510 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		D69DCCAF198CCC5C00162510 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
-		D6A15902198CD6BE0023AB47 /* CardSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardSprite.cpp; path = ../Classes/CardSprite.cpp; sourceTree = "<group>"; };
-		D6A15903198CD6BE0023AB47 /* CardSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardSprite.h; path = ../Classes/CardSprite.h; sourceTree = "<group>"; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -405,8 +401,6 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				D69DCCAE198CCC5C00162510 /* GameScene.cpp */,
 				D69DCCAF198CCC5C00162510 /* GameScene.h */,
-				D6A15902198CD6BE0023AB47 /* CardSprite.cpp */,
-				D6A15903198CD6BE0023AB47 /* CardSprite.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -779,7 +773,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A15904198CD6BE0023AB47 /* CardSprite.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -796,7 +789,6 @@
 			files = (
 				D69DCCB1198CCC5C00162510 /* GameScene.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
-				D6A15905198CD6BE0023AB47 /* CardSprite.cpp in Sources */,
 				D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,

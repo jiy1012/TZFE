@@ -9,10 +9,10 @@
 
 //system
 #include "cocos2d.h"
-#include "cocos-ext.h"
+//#include "cocos-ext.h"
 
 USING_NS_CC;
-USING_NS_CC_EXT;
+
 
 //project
 #include "DefinedBase.h"

@@ -11,16 +11,13 @@
 
 #include "CommonConfig.h"
 
-
-
-
 class DWSScene : public Layer
 {
 public:
 
     static DWSScene* shared();
     
-    Sprite* DWSLogoDisplay();
+    static Sprite* DWSLogoDisplay();
     
     Sprite* DWSTitleHeroDisplay();
     

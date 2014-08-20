@@ -1,8 +1,8 @@
 #include "HelloWorldScene.h"
-#include "DWSScene.h"
-#include "GameScene.h"
 
-USING_NS_CC;
+#include "DWSScene.h"
+
+#include "GameScene.h"
 
 Scene* HelloWorld::createScene()
 {
@@ -29,7 +29,7 @@ bool HelloWorld::init()
         return false;
     }
     
-    auto DWSSprite = DWSScene::shared()->DWSLogoDisplay();
+    Sprite* DWSSprite = DWSScene::DWSLogoDisplay();
     
     FadeOut* pFadeout = FadeOut::create(1.0f);
     auto pSequence = Sequence::create(
@@ -38,53 +38,6 @@ bool HelloWorld::init()
                                       NULL);
     DWSSprite->runAction(pSequence);
     this->addChild(DWSSprite, 0);
-    
-    /*
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           _CALLBACK_1(HelloWorld::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    */
     return true;
 }
 void HelloWorld::logoDisplayCallback()
@@ -133,19 +86,20 @@ void HelloWorld::sloganDisplayCallback()
 
 void HelloWorld::titleDisplayCallback()
 {
+    float scale = MIN(WIN_WIDTH/1024,WIN_HEIGHT/768);
     
-    CCLOG("");
-    auto title = LabelTTF::create("2048", "", 200);
+    auto title = LabelTTF::create("NUMBER", "", 200);
     title->setPosition(Vec2(WIN_WIDTH/2,WIN_HEIGHT/2));
+    title->setScale(scale);
     this->addChild(title);
     
     auto pStratButton = MenuItemImage::create("startButton.png", "startButtonSelected.png",
                                               CC_CALLBACK_1(HelloWorld::startGame,this));
     pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/6));
-    
+    pStratButton->setScale(scale);
     auto pExitButton = MenuItemImage::create("exitButton.png", "exitButtonSelected.png",CC_CALLBACK_1(HelloWorld::menuCloseCallback,this));
     pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/6));
-    
+    pExitButton->setScale(scale);
     auto pMenu = Menu::create(pStratButton,pExitButton,NULL);
     pMenu->setPosition( Vec2(0, 0) );
     this->addChild(pMenu, 1);
@@ -155,7 +109,7 @@ void HelloWorld::titleDisplayCallback()
 void HelloWorld::startGame(cocos2d::Ref* pSender)
 {
     CCLOG("start game");
-    auto gameScene = GameScene::createScene();
+    Scene* gameScene = GameScene::createScene();
     Director::getInstance()->pushScene(gameScene);
 }
 

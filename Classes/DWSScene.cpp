@@ -10,16 +10,16 @@
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
-using namespace CocosDenshion;
-DWSScene* DWSScene::s_DWSScene = NULL;
+//using namespace CocosDenshion;
+//DWSScene* DWSScene::s_DWSScene = NULL;
 
-DWSScene* DWSScene::shared()
-{
-    if (NULL == s_DWSScene) {
-        s_DWSScene = new DWSScene();
-    }
-    return s_DWSScene;
-}
+//DWSScene* DWSScene::shared()
+//{
+//    if (NULL == s_DWSScene) {
+//        s_DWSScene = new DWSScene();
+//    }
+//    return s_DWSScene;
+//}
 
 
 Sprite* DWSScene::DWSLogoDisplay()
