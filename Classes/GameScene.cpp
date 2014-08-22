@@ -18,6 +18,8 @@ GameScene::GameScene(){
     stepNum = 0;
     allNumber = Dictionary::create();
     allChange = Dictionary::create();
+    CC_SAFE_RETAIN(allNumber);
+    CC_SAFE_RETAIN(allChange);
 }
 GameScene::~GameScene(){
     line = 0;
@@ -48,8 +50,8 @@ bool GameScene::init()
     {
         return false;
     }
-    line = 10;
-    row = 10;
+    line = 5;
+    row = 5;
     buttonNum = 7;
     createGameScene(line, row, buttonNum);
     return true;
@@ -61,18 +63,22 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
     int oneWidth = (VISIBLE_WIDTH-50)/row;
 	int oneHeight = (VISIBLE_HEIGHT-50)/line;
     int one = MIN(oneWidth, oneHeight);
+//    CCLOG("one: %d w:%d h:%d",one,oneWidth,oneHeight);
     int tag = 1;
     int allWidth = one*(line+1);
     int allHeight = one*(row+1);
-	//4*4的单元格
-	for(int i=0; i<row; i++)
+	//line 行 row 列 的单元格 横行竖列
+	for(int i=0; i<line; i++)
 	{
-		for(int j=0; j<line; j++)
+		for(int j=0; j<row; j++)
 		{
-            int rand = random()%buttonNum+1;
-			Sprite* numberSprite = createNumberSprite(rand, one, one, one*(j+1), VISIBLE_HEIGHT-one*(i+1),tag);
-            allNumber->setObject(String::createWithFormat("%d",rand), tag);
+            int r = (arc4random() % buttonNum) + 1;
+//            int r = arc4random()%buttonNum+1;
+            CCLOG("r:%d",r);
+			Sprite* numberSprite = createNumberSprite(r, one, one, one*(j+1), VISIBLE_HEIGHT-one*(i+1),tag);
+            allNumber->setObject(String::createWithFormat("%d",r), tag);
             allChange->setObject(String::createWithFormat("%d",0), tag);
+            numberSprite->setTag(tag*100);
             tag++;
 			addChild(numberSprite);
 		}
@@ -88,7 +94,7 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
         int btnWidth = MIN(onebtn, 40);
         int btnHeight = MIN(onebtn, 40);
         
-        MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b+1000);
+        MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b*1000);
         buttonItems.pushBack(buttonItem);
     }
     Menu* buttonMenu = Menu::createWithArray(buttonItems);
@@ -112,7 +118,7 @@ void GameScene::clickNumberButton(Object* pSender)
 {
     auto buttonImg = (MenuItemImage*) pSender;
     int clickTag = buttonImg->getTag();
-    clickNum = clickTag - 1000;
+    clickNum = clickTag/1000;
     CCLOG("clickNumber:%d",clickNum);
     oldNumber = allNumber->valueForKey(1)->intValue();
     if (oldNumber == clickNum) {
@@ -121,7 +127,8 @@ void GameScene::clickNumberButton(Object* pSender)
     }
     if (allChange->valueForKey(1)->intValue() == 0) {
         allChange->setObject(String::createWithFormat("%d",1), 1);
-        addTagToChange(clickNum, oldNumber);
+        CCLOG("oldnumber:%d",oldNumber);
+        addTagToChange(oldNumber, oldNumber);
     }
     bool haveAdd = addTagToChange(clickNum, clickNum);
     if(haveAdd == false){
@@ -129,19 +136,26 @@ void GameScene::clickNumberButton(Object* pSender)
         return ;
     }
     DictElement* changeElement;
+//    std::string allChangeString = "";
     CCDICT_FOREACH(allChange, changeElement)
     {
+//        int key = changeElement->getIntKey();
+//        allChangeString.append(ITOA(key));
+//        allChangeString.append(":");
+//        allChangeString.append(allChange->valueForKey(changeElement->getIntKey())->getCString());
+//        allChangeString.append(" ");
         if(allChange->valueForKey(changeElement->getIntKey())->intValue() == 1)
         {
             allNumber->setObject(String::createWithFormat("%d",clickNum), changeElement->getIntKey());
         }
     }
-    
+//    CCLOG("allChangeString:%s",allChangeString.c_str());
     DictElement* numberElement;
     CCDICT_FOREACH(allNumber, numberElement)
     {
-        LabelTTF* TTFNumber = (LabelTTF*) getChildByTag(numberElement->getIntKey());
-        TTFNumber->setString(allNumber->valueForKey(numberElement->getIntKey())->getCString());
+        auto numSprit = getChildByTag(numberElement->getIntKey()*100);
+        auto numLabel = (LabelTTF*) numSprit->getChildByTag(numberElement->getIntKey());
+        numLabel->setString(allNumber->valueForKey(numberElement->getIntKey())->getCString());
     }
     return;
 }
@@ -150,7 +164,7 @@ Sprite* GameScene::createNumberSprite(int numbers,int width,int height,float spr
 {
     auto numberSprite = Sprite::create();
     numberSprite->setPosition(Point(spriteX,spriteY));
-    CCLOG("Sprite x:%f y:%f w:%d h:%d n:%d",spriteX,spriteY,width,height,numbers);
+//    CCLOG("Sprite x:%f y:%f w:%d h:%d n:%d",spriteX,spriteY,width,height,numbers);
     //加入中间字体
     auto TTFNumber = LabelTTF::create(ITOA(numbers),"",20);
     TTFNumber->setPosition(Point(numberSprite->getContentSize().width/2,numberSprite->getContentSize().height/2));
@@ -189,37 +203,37 @@ bool GameScene::checkAround(int tag, int compareNumber)
     
     if (needup){
         int changetag = tag-row;
-        int changeup = allChange->valueForKey(changetag)->intValue();
-        int numberup = allNumber->valueForKey(changetag)->intValue();
-        CCLOG("needup tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeup,numberup);
-        if( changeup == 0 && numberup == compareNumber ){
+        int changeStatus = allChange->valueForKey(changetag)->intValue();
+        int tagNumber = allNumber->valueForKey(tag)->intValue();
+//        CCLOG("needup tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);
+        if( changeStatus == 1 && tagNumber == compareNumber ){
             needadd = true;
         }
     }
     if (needleft){
         int changetag = tag-1;
-        int changeup = allChange->valueForKey(changetag)->intValue();
-        int numberup = allNumber->valueForKey(changetag)->intValue();
-        CCLOG("needleft tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeup,numberup);
-        if( changeup == 0 && numberup == compareNumber ){
+        int changeStatus = allChange->valueForKey(changetag)->intValue();
+        int tagNumber = allNumber->valueForKey(tag)->intValue();
+//        CCLOG("needleft tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);
+        if( changeStatus == 1 && tagNumber == compareNumber ){
             needadd = true;
         }
     }
     if (needright){
         int changetag = tag+1;
-        int changeup = allChange->valueForKey(changetag)->intValue();
-        int numberup = allNumber->valueForKey(changetag)->intValue();
-        CCLOG("needright tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeup,numberup);
-        if( changeup == 0 && numberup == compareNumber ){
+        int changeStatus = allChange->valueForKey(changetag)->intValue();
+        int tagNumber = allNumber->valueForKey(tag)->intValue();
+//        CCLOG("needright tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);
+        if( changeStatus == 1 && tagNumber == compareNumber ){
             needadd = true;
         }
     }
     if (needdown){
         int changetag = tag+row;
-        int changeup = allChange->valueForKey(changetag)->intValue();
-        int numberup = allNumber->valueForKey(changetag)->intValue();
-        CCLOG("needdown tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeup,numberup);
-        if( changeup == 0 && numberup == compareNumber ){
+        int changeStatus = allChange->valueForKey(changetag)->intValue();
+        int tagNumber = allNumber->valueForKey(tag)->intValue();
+//        CCLOG("needdown tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);
+        if( changeStatus == 1 && tagNumber == compareNumber ){
             needadd = true;
         }
     }
