@@ -116,10 +116,10 @@ void HelloWorld::startGame(cocos2d::Ref* pSender)
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
-#if (_TARGET_PLATFORM == _PLATFORM_WP8) || (_TARGET_PLATFORM == _PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
+//#if (_TARGET_PLATFORM == _PLATFORM_WP8) || (_TARGET_PLATFORM == _PLATFORM_WINRT)
+//	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+//    return;
+//#endif
 
     Director::getInstance()->end();
 

@@ -126,9 +126,9 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
 }
 
 
-void GameScene::clickBackButton(CCObject* pSender)
+void GameScene::clickBackButton(Ref* pSender)
 {
-    CCLog("click backClick");
+    CCLOG("%s","click backClick");
     Director::getInstance()->popScene();
     
 }
@@ -145,7 +145,7 @@ MenuItemImage* GameScene::createNumberButton(int buttonNumber ,int width,int hei
     return buttonImg;
 }
 
-void GameScene::clickNumberButton(Object* pSender)
+void GameScene::clickNumberButton(Ref* pSender)
 {
     auto buttonImg = (MenuItemImage*) pSender;
     int clickTag = buttonImg->getTag();

@@ -30,11 +30,11 @@ public:
     //创建数字按钮
     MenuItemImage* createNumberButton(int buttonNumber ,int width,int height,float positionX,float positionY,int tag );
     
-    void clickBackButton(CCObject* pSender);
+    void clickBackButton(Ref* pSender);
 protected:
     bool checkAround(int tag, int compareNumber);
     bool addTagToChange(int clickNumber,int compareNumber);
-    void clickNumberButton(Object* pSender);
+    void clickNumberButton(Ref* pSender);
 private:
     //  行数  列数 按钮数量   上次数字   点击的数字 总步数
     int line,row,buttonNum,oldNumber,clickNum,stepNum;
