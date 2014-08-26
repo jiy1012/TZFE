@@ -62,8 +62,8 @@ bool GameScene::init()
 void GameScene::createGameScene(int line,int row,int buttonNum)
 {
 	//求出单元格的宽度和高度
-    int oneWidth = (VISIBLE_WIDTH-50)/row;
-	int oneHeight = (VISIBLE_HEIGHT-50)/line;
+    int oneWidth = (VISIBLE_WIDTH)/(row+2);
+	int oneHeight = (VISIBLE_HEIGHT/2)/line;
     int one = MIN(oneWidth, oneHeight);
 //    CCLOG("one: %d w:%d h:%d",one,oneWidth,oneHeight);
     int tag = 1;
@@ -98,11 +98,16 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
     }
     for (int b=1; b<=buttonNum; b++) {
         x = (onebtn+2)*(b-1)+onebtn/2;
-        y = (VISIBLE_HEIGHT - allHeight)/2-onebtn/2;
+        y = (VISIBLE_HEIGHT - allHeight)-onebtn/2;
 //        CCLOG("w:%d h:%d",btnWidth,btnHeight);
         MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b*1000);
         buttonItems.pushBack(buttonItem);
     }
+    
+    MenuItemImage* backImg = MenuItemImage::create("backButton.png", "backButton.png", CC_CALLBACK_1(GameScene::clickBackButton, this));
+    backImg->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT - allHeight)-6*btnHeight/2));
+                         
+    buttonItems.pushBack(backImg);
     Menu* buttonMenu = Menu::createWithArray(buttonItems);
     buttonMenu->setPosition(Vec2::ZERO);
     addChild(buttonMenu);
@@ -114,8 +119,18 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
 //    addChild(TTFStep);
     auto TTFResult = LabelTTF::create("","",30);
     TTFResult->setTag(10000);
-    TTFResult->setPosition(Point(WIN_WIDTH/2,btnHeight/2));
+    TTFResult->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT - allHeight)-3*btnHeight/2));
     addChild(TTFResult);
+    
+
+}
+
+
+void GameScene::clickBackButton(CCObject* pSender)
+{
+    CCLog("click backClick");
+    Director::getInstance()->popScene();
+    
 }
 
 MenuItemImage* GameScene::createNumberButton(int buttonNumber ,int width,int height,float positionX,float positionY,int tag )

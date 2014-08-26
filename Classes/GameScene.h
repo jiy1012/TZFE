@@ -29,6 +29,8 @@ public:
     Sprite* createNumberSprite(int numbers,int width,int height,float spriteX,float spriteY,int tag);
     //创建数字按钮
     MenuItemImage* createNumberButton(int buttonNumber ,int width,int height,float positionX,float positionY,int tag );
+    
+    void clickBackButton(CCObject* pSender);
 protected:
     bool checkAround(int tag, int compareNumber);
     bool addTagToChange(int clickNumber,int compareNumber);
