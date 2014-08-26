@@ -50,8 +50,8 @@ bool GameScene::init()
     {
         return false;
     }
-    line = 5;
-    row = 5;
+    line = 8;
+    row = 8;
     buttonNum = 7;
     createGameScene(line, row, buttonNum);
     return true;
@@ -74,8 +74,8 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
 		{
             int r = (arc4random() % buttonNum) + 1;
 //            int r = arc4random()%buttonNum+1;
-            CCLOG("r:%d",r);
-			Sprite* numberSprite = createNumberSprite(r, one, one, one*(j+1), VISIBLE_HEIGHT-one*(i+1),tag);
+//            CCLOG("r:%d",r);
+			Sprite* numberSprite = createNumberSprite(r, one, one, one*((float)j+0.5), VISIBLE_HEIGHT-one*(i+1),tag);
             allNumber->setObject(String::createWithFormat("%d",r), tag);
             allChange->setObject(String::createWithFormat("%d",0), tag);
             numberSprite->setTag(tag*100);
@@ -91,9 +91,14 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
     for (int b=1; b<=buttonNum; b++) {
         x = (onebtn+2)*(b-1)+onebtn/2;
         y = (VISIBLE_HEIGHT - allHeight)/2-onebtn/2;
-        int btnWidth = MIN(onebtn, 40);
-        int btnHeight = MIN(onebtn, 40);
-        
+        int btnWidth = onebtn;
+        int btnHeight = onebtn;
+        if (onebtn < 40) {
+            btnWidth = MIN(onebtn, 40);
+            btnHeight = MIN(onebtn, 40);
+        }
+
+//        CCLOG("w:%d h:%d",btnWidth,btnHeight);
         MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b*1000);
         buttonItems.pushBack(buttonItem);
     }
@@ -164,9 +169,13 @@ Sprite* GameScene::createNumberSprite(int numbers,int width,int height,float spr
 {
     auto numberSprite = Sprite::create();
     numberSprite->setPosition(Point(spriteX,spriteY));
+//    numberSprite->setContentSize(Size(width,height));
 //    CCLOG("Sprite x:%f y:%f w:%d h:%d n:%d",spriteX,spriteY,width,height,numbers);
     //加入中间字体
-    auto TTFNumber = LabelTTF::create(ITOA(numbers),"",20);
+//    auto TTFNumber = LabelTTF::create(ITOA(numbers),"",25);
+    auto TTFNumber = LabelTTF::create();
+    TTFNumber->setFontSize(height);
+    TTFNumber->setString(ITOA(numbers));
     TTFNumber->setPosition(Point(numberSprite->getContentSize().width/2,numberSprite->getContentSize().height/2));
     TTFNumber->setTag(tag);
     numberSprite->addChild(TTFNumber);
