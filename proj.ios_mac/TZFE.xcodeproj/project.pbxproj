@@ -64,6 +64,12 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
 		D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
+		D66B3C8219B090DE004E6B7C /* 6_6_4.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C7F19B090DE004E6B7C /* 6_6_4.png */; };
+		D66B3C8319B090DE004E6B7C /* 6_6_4.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C7F19B090DE004E6B7C /* 6_6_4.png */; };
+		D66B3C8419B090DE004E6B7C /* 8_8_6.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C8019B090DE004E6B7C /* 8_8_6.png */; };
+		D66B3C8519B090DE004E6B7C /* 8_8_6.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C8019B090DE004E6B7C /* 8_8_6.png */; };
+		D66B3C8619B090DE004E6B7C /* 10_10_7.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C8119B090DE004E6B7C /* 10_10_7.png */; };
+		D66B3C8719B090DE004E6B7C /* 10_10_7.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C8119B090DE004E6B7C /* 10_10_7.png */; };
 		D688AF1119A4A16B008EEE90 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D688AEFE19A4A16B008EEE90 /* backButton.png */; };
 		D688AF1219A4A16B008EEE90 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D688AEFE19A4A16B008EEE90 /* backButton.png */; };
 		D688AF1319A4A16B008EEE90 /* backButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D688AEFF19A4A16B008EEE90 /* backButtonSelected.png */; };
@@ -315,6 +321,9 @@
 		D62463DB1986A506009B8067 /* DWSScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DWSScene.cpp; path = ../Classes/DWSScene.cpp; sourceTree = "<group>"; };
 		D62463DC1986A506009B8067 /* DWSScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSScene.h; path = ../Classes/DWSScene.h; sourceTree = "<group>"; };
 		D62463E11986A669009B8067 /* CommonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonConfig.h; path = ../Classes/CommonConfig.h; sourceTree = "<group>"; };
+		D66B3C7F19B090DE004E6B7C /* 6_6_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6_6_4.png; sourceTree = "<group>"; };
+		D66B3C8019B090DE004E6B7C /* 8_8_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8_8_6.png; sourceTree = "<group>"; };
+		D66B3C8119B090DE004E6B7C /* 10_10_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_10_7.png; sourceTree = "<group>"; };
 		D688AEFE19A4A16B008EEE90 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		D688AEFF19A4A16B008EEE90 /* backButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButtonSelected.png; sourceTree = "<group>"; };
 		D688AF0019A4A16B008EEE90 /* button_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_1.png; sourceTree = "<group>"; };
@@ -554,6 +563,9 @@
 		D688AEFD19A4A16B008EEE90 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				D66B3C7F19B090DE004E6B7C /* 6_6_4.png */,
+				D66B3C8019B090DE004E6B7C /* 8_8_6.png */,
+				D66B3C8119B090DE004E6B7C /* 10_10_7.png */,
 				D688AF3519A4CCB0008EEE90 /* button_6.png */,
 				D688AF3619A4CCB0008EEE90 /* button_7.png */,
 				D688AEFE19A4A16B008EEE90 /* backButton.png */,
@@ -776,9 +788,11 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				D688AF2719A4A16B008EEE90 /* startButton.png in Resources */,
 				D688AF2319A4A16B008EEE90 /* exitButton.png in Resources */,
+				D66B3C8619B090DE004E6B7C /* 10_10_7.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				D688AF1919A4A16B008EEE90 /* button_3.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				D66B3C8219B090DE004E6B7C /* 6_6_4.png in Resources */,
 				D688AF2919A4A16B008EEE90 /* startButtonSelected.png in Resources */,
 				D688AF1119A4A16B008EEE90 /* backButton.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -790,6 +804,7 @@
 				D69984471986B18300D349BE /* Icon.png in Resources */,
 				D688AF2B19A4A16B008EEE90 /* Marker Felt.ttf in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				D66B3C8419B090DE004E6B7C /* 8_8_6.png in Resources */,
 				D688AF3119A4A16B008EEE90 /* mydraw.jpg in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
@@ -811,7 +826,9 @@
 				D688AF1419A4A16B008EEE90 /* backButtonSelected.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D688AF2019A4A16B008EEE90 /* CloseNormal.png in Resources */,
+				D66B3C8519B090DE004E6B7C /* 8_8_6.png in Resources */,
 				D688AF2419A4A16B008EEE90 /* exitButton.png in Resources */,
+				D66B3C8719B090DE004E6B7C /* 10_10_7.png in Resources */,
 				D688AF2C19A4A16B008EEE90 /* Marker Felt.ttf in Resources */,
 				D69984461986B18300D349BE /* Icon-Small@2x.png in Resources */,
 				D688AF1619A4A16B008EEE90 /* button_1.png in Resources */,
@@ -821,6 +838,7 @@
 				D688AF3A19A4CCB0008EEE90 /* button_7.png in Resources */,
 				D688AF3019A4A16B008EEE90 /* HelloWorld.png in Resources */,
 				D69984401986B18300D349BE /* Icon-72.png in Resources */,
+				D66B3C8319B090DE004E6B7C /* 6_6_4.png in Resources */,
 				D688AF1819A4A16B008EEE90 /* button_2.png in Resources */,
 				D688AF3219A4A16B008EEE90 /* mydraw.jpg in Resources */,
 				D69984481986B18300D349BE /* Icon.png in Resources */,

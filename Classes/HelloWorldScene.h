@@ -20,6 +20,8 @@ public:
     void titleDisplayCallback();
     
     void startGame(cocos2d::Ref* pSender);
+    
+    void startGameWithParams(cocos2d::Ref* pSender,int l,int r,int b);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };

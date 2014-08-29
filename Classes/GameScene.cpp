@@ -142,7 +142,7 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
     
     MenuItemImage* backImg = MenuItemImage::create("backButton.png", "backButton.png", CC_CALLBACK_1(GameScene::clickBackButton, this));
     backImg->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT/2)-btnHeight*3-btnHeight/2));
-                         
+    backImg->setScale(0.5);
     buttonItems.pushBack(backImg);
     Menu* buttonMenu = Menu::createWithArray(buttonItems);
     buttonMenu->setPosition(Vec2::ZERO);

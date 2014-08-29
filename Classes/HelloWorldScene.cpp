@@ -93,14 +93,30 @@ void HelloWorld::titleDisplayCallback()
     title->setScale(scale);
     this->addChild(title);
     
-    auto pStratButton = MenuItemImage::create("startButton.png", "startButtonSelected.png",
-                                              CC_CALLBACK_1(HelloWorld::startGame,this));
-    pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/4));
-    pStratButton->setScale(scale);
+//    auto pStratButton = MenuItemImage::create("startButton.png", "startButtonSelected.png",
+//                                              CC_CALLBACK_1(HelloWorld::startGame,this));
+//    pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/4));
+//    pStratButton->setScale(scale);
+    auto pStrat6 = MenuItemImage::create("6_6_4.png", "6_6_4.png",
+                                         CC_CALLBACK_1(HelloWorld::startGameWithParams,this,6,6,4));
+    pStrat6->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/4));
+    pStrat6->setScale(scale);
+
+    auto pStrat8 = MenuItemImage::create("8_8_6.png", "8_8_6.png",
+                                         CC_CALLBACK_1(HelloWorld::startGameWithParams,this,8,8,6));
+    pStrat8->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/4));
+    pStrat8->setScale(scale);
+    
+    auto pStrat10 = MenuItemImage::create("10_10_7.png", "10_10_7.png",
+                                         CC_CALLBACK_1(HelloWorld::startGameWithParams,this,10,10,7));
+    pStrat10->setPosition(Vec2(WIN_WIDTH*3/4, WIN_HEIGHT/4));
+    pStrat10->setScale(scale);
+    
     auto pExitButton = MenuItemImage::create("exitButton.png", "exitButtonSelected.png",CC_CALLBACK_1(HelloWorld::menuCloseCallback,this));
-    pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/4));
+    pExitButton->setPosition(Vec2(WIN_WIDTH/2, WIN_HEIGHT/8));
     pExitButton->setScale(scale);
-    auto pMenu = Menu::create(pStratButton,pExitButton,NULL);
+    
+    auto pMenu = Menu::create(pStrat6,pStrat8,pStrat10,pExitButton,NULL);
     pMenu->setPosition( Vec2(0, 0) );
     this->addChild(pMenu, 1);
 }
@@ -109,11 +125,15 @@ void HelloWorld::titleDisplayCallback()
 void HelloWorld::startGame(cocos2d::Ref* pSender)
 {
     CCLOG("start game");
-//    Scene* gameScene = GameScene::createScene();
-    Scene* gameScene = GameScene::createScene(10,10,6);
+    Scene* gameScene = GameScene::createScene();
     Director::getInstance()->pushScene(gameScene);
 }
-
+void HelloWorld::startGameWithParams(cocos2d::Ref* pSender,int l,int r,int b)
+{
+    CCLOG("start game line:%d row:%d button:%d", l ,r ,b);
+    Scene* gameScene = GameScene::createScene(l,r,b);
+    Director::getInstance()->pushScene(gameScene);
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
