@@ -5,11 +5,14 @@
 //  Created by 刘燚 on 14-8-2.
 //
 //tag分类:
-//数字卡片:number*100
-//数字按钮:button*1000
+//数字卡片:number+100
+//数字按钮:button+1000
 //结果10000
 #include "GameScene.h"
 USING_NS_CC;
+#define TAG_RESULT_LABLE 100000
+#define TAG_ADD_NUMBER_LABLE 1000
+#define TAG_ADD_NUMBER_BUTTON 100
 
 GameScene::GameScene(){
     g_line = 0;
@@ -80,9 +83,9 @@ bool GameScene::init()
     {
         return false;
     }
-    g_line = 8;
-    g_row = 6;
-    g_buttonNum = 5;
+    g_line = 10;
+    g_row = 10;
+    g_buttonNum = 4;
     createGameScene(g_line, g_row, g_buttonNum);
     return true;
 }
@@ -108,7 +111,7 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
 			Sprite* numberSprite = createNumberSprite(r, one, one, one*((float)j+0.5), VISIBLE_HEIGHT-one*(i+1),tag);
             allNumber->setObject(String::createWithFormat("%d",r), tag);
             allChange->setObject(String::createWithFormat("%d",0), tag);
-            numberSprite->setTag(tag*100);
+            numberSprite->setTag(tag+TAG_ADD_NUMBER_LABLE);
             tag++;
 			addChild(numberSprite);
 		}
@@ -128,12 +131,12 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
         x = (onebtn+2)*(b-1)+onebtn/2;
         y = (VISIBLE_HEIGHT/2)-onebtn/2;
 //        CCLOG("w:%d h:%d",btnWidth,btnHeight);
-        MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b*1000);
+        MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b+TAG_ADD_NUMBER_BUTTON);
         buttonItems.pushBack(buttonItem);
     }
     
     auto TTFResult = LabelTTF::create("","",30);
-    TTFResult->setTag(10000);
+    TTFResult->setTag(TAG_RESULT_LABLE);
     TTFResult->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT/2)-btnHeight*2-btnHeight/2));
     addChild(TTFResult);
     
@@ -171,7 +174,7 @@ void GameScene::clickNumberButton(Ref* pSender)
 {
     auto buttonImg = (MenuItemImage*) pSender;
     int clickTag = buttonImg->getTag();
-    g_clickNum = clickTag/1000;
+    g_clickNum = clickTag-TAG_ADD_NUMBER_BUTTON;
     CCLOG("clickNumber:%d",g_clickNum);
     g_oldNumber = allNumber->valueForKey(1)->intValue();
     if (g_oldNumber == g_clickNum) {
@@ -215,21 +218,20 @@ void GameScene::clickNumberButton(Ref* pSender)
     DictElement* numberElement;
     CCDICT_FOREACH(allNumber, numberElement)
     {
-        auto numSprit = getChildByTag(numberElement->getIntKey()*100);
+        auto numSprit = getChildByTag(numberElement->getIntKey()+TAG_ADD_NUMBER_LABLE);
         auto numLabel = (LabelTTF*) numSprit->getChildByTag(numberElement->getIntKey());
         numLabel->setString(allNumber->valueForKey(numberElement->getIntKey())->getCString());
     }
+    auto TTFRes = (LabelTTF*) getChildByTag(TAG_RESULT_LABLE);
     if (i >= g_line*g_row) {
         std::string resString = String::createWithFormat("恭喜完成!一共用了%d步! ",g_stepNum)->getCString();
-        CCLOG("%s",resString.c_str());
-        auto TTFRes = (LabelTTF*) getChildByTag(10000);
+        CCLOG("%s,%s",TTFRes->getString().c_str(),resString.c_str());
         TTFRes->setString(resString);
         return;
     }
-    std::string resString = String::createWithFormat("一共用了 %d 步",g_stepNum)->getCString();
-    CCLOG("%s",resString.c_str());
-    auto TTFStep = (LabelTTF*) getChildByTag(10000);
-    TTFStep->setString(resString);
+    std::string resString = String::createWithFormat("一共用了%d步",g_stepNum)->getCString();
+    CCLOG("%s,%s",TTFRes->getString().c_str(),resString.c_str());
+    TTFRes->setString(resString);
     return;
 }
 
@@ -260,7 +262,7 @@ bool GameScene::addTagToChange(int clickNumber,int compareNumber)
             haveadd = true;
             allChange->setObject(String::createWithFormat("%d",1), i);
             allNumber->setObject(String::createWithFormat("%d",clickNumber), i);
-            CCLOG("add %d to allChange with compare:%d click:%d",i,compareNumber,clickNumber);
+//            CCLOG("add %d to allChange with compare:%d click:%d",i,compareNumber,clickNumber);
         }
     }
     return haveadd;

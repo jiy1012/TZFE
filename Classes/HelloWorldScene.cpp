@@ -109,8 +109,8 @@ void HelloWorld::titleDisplayCallback()
 void HelloWorld::startGame(cocos2d::Ref* pSender)
 {
     CCLOG("start game");
-    Scene* gameScene = GameScene::createScene();
-//    Scene* gameScene = GameScene::createScene(10,10,5);
+//    Scene* gameScene = GameScene::createScene();
+    Scene* gameScene = GameScene::createScene(10,10,6);
     Director::getInstance()->pushScene(gameScene);
 }
 
