@@ -12,24 +12,24 @@
 USING_NS_CC;
 
 GameScene::GameScene(){
-    line = 0;
-    row = 0;
-    buttonNum = 0;
-    oldNumber = 0;
-    clickNum = 0;
-    stepNum = 0;
+    g_line = 0;
+    g_row = 0;
+    g_buttonNum = 0;
+    g_oldNumber = 0;
+    g_clickNum = 0;
+    g_stepNum = 0;
     allNumber = Dictionary::create();
     allChange = Dictionary::create();
     CC_SAFE_RETAIN(allNumber);
     CC_SAFE_RETAIN(allChange);
 }
 GameScene::~GameScene(){
-    line = 0;
-    row = 0;
-    buttonNum = 0;
-    oldNumber = 0;
-    clickNum = 0;
-    stepNum = 0;
+    g_line = 0;
+    g_row = 0;
+    g_buttonNum = 0;
+    g_oldNumber = 0;
+    g_clickNum = 0;
+    g_stepNum = 0;
     CC_SAFE_RELEASE(allNumber);
     CC_SAFE_RELEASE(allChange);
 }
@@ -45,6 +45,34 @@ Scene* GameScene::createScene()
     return scene;
 }
 
+Scene* GameScene::createScene(int l,int r,int b)
+{
+    auto scene = Scene::create();
+    GameScene* layer = new GameScene();
+    if (layer && layer->init(l, r, b)) {
+        layer->autorelease();
+    }else{
+        delete layer;
+        layer = NULL;
+    }
+    scene->addChild(layer);
+    
+    return scene;
+}
+
+bool GameScene::init(int l,int r,int b)
+{
+    if ( !Layer::init() )
+    {
+        return false;
+    }
+    g_line = l;
+    g_row = r;
+    g_buttonNum = b;
+    createGameScene(g_line, g_row, g_buttonNum);
+    return true;
+}
+
 bool GameScene::init()
 {
     
@@ -52,10 +80,10 @@ bool GameScene::init()
     {
         return false;
     }
-    line = 8;
-    row = 8;
-    buttonNum = 7;
-    createGameScene(line, row, buttonNum);
+    g_line = 8;
+    g_row = 6;
+    g_buttonNum = 5;
+    createGameScene(g_line, g_row, g_buttonNum);
     return true;
 }
 
@@ -92,37 +120,31 @@ void GameScene::createGameScene(int line,int row,int buttonNum)
     int y = 0;
     int btnWidth = onebtn;
     int btnHeight = onebtn;
-    if (onebtn < 40) {
-        btnWidth = MIN(onebtn, 40);
-        btnHeight = MIN(onebtn, 40);
-    }
+//    if (onebtn < 40) {
+//        btnWidth = MIN(onebtn, 40);
+//        btnHeight = MIN(onebtn, 40);
+//    }
     for (int b=1; b<=buttonNum; b++) {
         x = (onebtn+2)*(b-1)+onebtn/2;
-        y = (VISIBLE_HEIGHT - allHeight)-onebtn/2;
+        y = (VISIBLE_HEIGHT/2)-onebtn/2;
 //        CCLOG("w:%d h:%d",btnWidth,btnHeight);
         MenuItemImage* buttonItem = createNumberButton(b, btnWidth,btnHeight,x,y,b*1000);
         buttonItems.pushBack(buttonItem);
     }
     
+    auto TTFResult = LabelTTF::create("","",30);
+    TTFResult->setTag(10000);
+    TTFResult->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT/2)-btnHeight*2-btnHeight/2));
+    addChild(TTFResult);
+    
     MenuItemImage* backImg = MenuItemImage::create("backButton.png", "backButton.png", CC_CALLBACK_1(GameScene::clickBackButton, this));
-    backImg->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT - allHeight)-6*btnHeight/2));
+    backImg->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT/2)-btnHeight*3-btnHeight/2));
                          
     buttonItems.pushBack(backImg);
     Menu* buttonMenu = Menu::createWithArray(buttonItems);
     buttonMenu->setPosition(Vec2::ZERO);
     addChild(buttonMenu);
     
-//    auto stepString = String::createWithFormat("一共用了 %d 步",0)->getCString();
-//    auto TTFStep = LabelTTF::create(stepString,"",30);
-//    TTFStep->setTag(10001);
-//    TTFStep->setPosition(Point(TTFStep->getContentSize().width/2,TTFStep->getContentSize().height/2));
-//    addChild(TTFStep);
-    auto TTFResult = LabelTTF::create("","",30);
-    TTFResult->setTag(10000);
-    TTFResult->setPosition(Point(WIN_WIDTH/2,(VISIBLE_HEIGHT - allHeight)-3*btnHeight/2));
-    addChild(TTFResult);
-    
-
 }
 
 
@@ -137,7 +159,7 @@ MenuItemImage* GameScene::createNumberButton(int buttonNumber ,int width,int hei
 {
     MenuItemImage* buttonImg = MenuItemImage::create(String::createWithFormat("button_%d.png",buttonNumber)->getCString(), String::createWithFormat("button_%d.png",buttonNumber)->getCString(), CC_CALLBACK_1(GameScene::clickNumberButton, this));
     buttonImg->setTag(tag);
-    buttonImg->setPosition(Point(positionX,positionY));
+    buttonImg->setPosition(Point(positionX,positionY-buttonImg->getContentSize().height/2));
     float btnScaleX = (float)width/40.0;
     float btnScaleY = (float)height/40.0;
     float scaleBtn = MIN(btnScaleX, btnScaleY);
@@ -149,24 +171,30 @@ void GameScene::clickNumberButton(Ref* pSender)
 {
     auto buttonImg = (MenuItemImage*) pSender;
     int clickTag = buttonImg->getTag();
-    clickNum = clickTag/1000;
-    CCLOG("clickNumber:%d",clickNum);
-    oldNumber = allNumber->valueForKey(1)->intValue();
-    if (oldNumber == clickNum) {
+    g_clickNum = clickTag/1000;
+    CCLOG("clickNumber:%d",g_clickNum);
+    g_oldNumber = allNumber->valueForKey(1)->intValue();
+    if (g_oldNumber == g_clickNum) {
         CCLOG("oldNumber == clickNum");
         return;
     }
     if (allChange->valueForKey(1)->intValue() == 0) {
         allChange->setObject(String::createWithFormat("%d",1), 1);
-        CCLOG("oldnumber:%d",oldNumber);
-        addTagToChange(oldNumber, oldNumber);
+        CCLOG("oldnumber:%d",g_oldNumber);
+        addTagToChange(g_oldNumber, g_oldNumber);
     }
-    bool haveAdd = addTagToChange(clickNum, clickNum);
+    bool haveAdd = addTagToChange(g_clickNum, g_clickNum);
+    
     if(haveAdd == false){
         CCLOG("haveAdd == false");
         return ;
     }
-    stepNum++;
+    
+    do {
+        haveAdd = addTagToChange(g_clickNum, g_clickNum);
+    }while (haveAdd);
+
+    g_stepNum++;
     DictElement* changeElement;
 //    std::string allChangeString = "";
     int i = 0;
@@ -180,7 +208,7 @@ void GameScene::clickNumberButton(Ref* pSender)
         if(allChange->valueForKey(changeElement->getIntKey())->intValue() == 1)
         {
             i++;
-            allNumber->setObject(String::createWithFormat("%d",clickNum), changeElement->getIntKey());
+            allNumber->setObject(String::createWithFormat("%d",g_clickNum), changeElement->getIntKey());
         }
     }
 //    CCLOG("allChangeString:%s",allChangeString.c_str());
@@ -191,14 +219,14 @@ void GameScene::clickNumberButton(Ref* pSender)
         auto numLabel = (LabelTTF*) numSprit->getChildByTag(numberElement->getIntKey());
         numLabel->setString(allNumber->valueForKey(numberElement->getIntKey())->getCString());
     }
-    if (i >= line*row) {
-        std::string resString = String::createWithFormat("恭喜完成!一共用了%d步! ",stepNum)->getCString();
+    if (i >= g_line*g_row) {
+        std::string resString = String::createWithFormat("恭喜完成!一共用了%d步! ",g_stepNum)->getCString();
         CCLOG("%s",resString.c_str());
         auto TTFRes = (LabelTTF*) getChildByTag(10000);
         TTFRes->setString(resString);
         return;
     }
-    std::string resString = String::createWithFormat("一共用了 %d 步",stepNum)->getCString();
+    std::string resString = String::createWithFormat("一共用了 %d 步",g_stepNum)->getCString();
     CCLOG("%s",resString.c_str());
     auto TTFStep = (LabelTTF*) getChildByTag(10000);
     TTFStep->setString(resString);
@@ -245,13 +273,13 @@ bool GameScene::checkAround(int tag, int compareNumber)
     bool needleft = true;
     bool needright = true;
     bool needadd = false;
-    if (tag%row == 1) {needleft = false;};
-    if (tag%row == 0){needright = false;}
-    if (tag<row){needup = false;}
-    if (tag>row*(line-1)){needdown = false;}
+    if (tag%g_row == 1) {needleft = false;};
+    if (tag%g_row == 0){needright = false;}
+    if (tag<g_row){needup = false;}
+    if (tag>g_row*(g_line-1)){needdown = false;}
     
     if (needup){
-        int changetag = tag-row;
+        int changetag = tag-g_row;
         int changeStatus = allChange->valueForKey(changetag)->intValue();
         int tagNumber = allNumber->valueForKey(tag)->intValue();
 //        CCLOG("needup tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);
@@ -278,7 +306,7 @@ bool GameScene::checkAround(int tag, int compareNumber)
         }
     }
     if (needdown){
-        int changetag = tag+row;
+        int changetag = tag+g_row;
         int changeStatus = allChange->valueForKey(changetag)->intValue();
         int tagNumber = allNumber->valueForKey(tag)->intValue();
 //        CCLOG("needdown tag:%d changetag:%d inchange:%d innumber:%d",tag,changetag,changeStatus,tagNumber);

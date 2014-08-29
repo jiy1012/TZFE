@@ -18,11 +18,14 @@ public:
     ~GameScene();
     
     static cocos2d::Scene* createScene();
+    static Scene* createScene(int l,int r,int b);//带参数创建layer
     
     virtual bool init();
 
     CREATE_FUNC(GameScene);
-
+    
+    bool init(int l,int r,int b);
+    
     //创建场景
     void createGameScene(int line,int row,int buttonNum);
     //创建数字
@@ -37,7 +40,7 @@ protected:
     void clickNumberButton(Ref* pSender);
 private:
     //  行数  列数 按钮数量   上次数字   点击的数字 总步数
-    int line,row,buttonNum,oldNumber,clickNum,stepNum;
+    int g_line,g_row,g_buttonNum,g_oldNumber,g_clickNum,g_stepNum;
     //总的tag=>数字列表
     Dictionary* allNumber;
     //改过的tag列表
