@@ -108,9 +108,7 @@ def copy_files(src, dst):
         if not item.startswith('.') and not item.endswith('.gz') and os.path.isfile(path):
             shutil.copy(path, dst)
         if os.path.isdir(path):
-            new_dst = os.path.join(dst, item)
-            os.mkdir(new_dst)
-            copy_files(path, new_dst)
+            copy_files(path, dst)
 
 def copy_resources(app_android_root):
 

@@ -276,7 +276,7 @@
 		1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = ../Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
 		1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = ../Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* TZFE iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "TZFE iOS.app"; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		5087E76F17EB910900C73F5D /* TZFE Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "TZFE Mac.app"; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5087E76F17EB910900C73F5D /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087E77217EB970100C73F5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5087E77317EB970100C73F5D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5087E77417EB970100C73F5D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -439,8 +439,8 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* TZFE iOS.app */,
-				5087E76F17EB910900C73F5D /* TZFE Mac.app */,
+				1D6058910D05DD3D006BFB54 /* Number.app */,
+				5087E76F17EB910900C73F5D /* Number.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 			);
 			name = "TZFE iOS";
 			productName = iphone;
-			productReference = 1D6058910D05DD3D006BFB54 /* TZFE iOS.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Number.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5087E73D17EB910900C73F5D /* TZFE Mac */ = {
@@ -647,7 +647,7 @@
 			);
 			name = "TZFE Mac";
 			productName = iphone;
-			productReference = 5087E76F17EB910900C73F5D /* TZFE Mac.app */;
+			productReference = 5087E76F17EB910900C73F5D /* Number.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
