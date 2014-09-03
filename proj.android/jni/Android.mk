@@ -6,14 +6,18 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-MY_CPP_LIST := $(wildcard $(LOCAL_PATH)/*.cpp)
-MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/hellocpp/*.cpp)
-MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/../../Classes/*.cpp)
+define all-cpp-files
+$(patsubst jni/%,%, $(shell find $(LOCAL_PATH)/../../Classes/ $(LOCAL_PATH)/ -name "*.cpp"))  
+endef
 
+define all-cpp-dir
+	$(patsubst jni/%,$(LOCAL_PATH)/%, $(shell find $(LOCAL_PATH)/../../Classes/ -type d -not -wholename '*.svn*'))  
+endef
 
-LOCAL_SRC_FILES := $(MY_CPP_LIST:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES := $(call all-cpp-files)
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES := $(call all-cpp-dir)
+
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

@@ -3,33 +3,7 @@
 #include "DWSScene.h"
 
 #include "GameScene.h"
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include "jni.h"
-#include "jni/JniHelper.h"
-
-#endif
-void HelloWorld::startGame(cocos2d::Ref* pSender)
-{
-    CCLOG("test jni");
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo t;
-    std::string ret;
-    if (JniHelper::getStaticMethodInfo(t, "com/fourfire/TZFE/SIMCardInfo", "getNativePhoneNumber", "(Ljava/lang/String;)Ljava/lang/String;")) {
-        CCLOG("test JniHelper::getStaticMethodInfo ");
-//        jstring jret = (jstring)t.env->CallObjectMethod(t.classID, t.methodID);
-//        ret = JniHelper::jstring2string(jret);
-//        CCLOG("%s",ret);
-    }
-#endif
-    CCLOG("test jni end ");
-    //    Scene* gameScene = GameScene::createScene();
-    //    Director::getInstance()->pushScene(gameScene);
-}
-
+#include "Device.h"
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -123,6 +97,7 @@ void HelloWorld::titleDisplayCallback()
                                               CC_CALLBACK_1(HelloWorld::startGame,this));
     pStratButton->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/8));
     pStratButton->setScale(scale);
+
     auto pStrat6 = MenuItemImage::create("6_6_4.png", "6_6_4.png",
                                          CC_CALLBACK_1(HelloWorld::startGameWithParams,this,6,6,4));
     pStrat6->setPosition(Vec2(WIN_WIDTH/4, WIN_HEIGHT/4));
@@ -148,7 +123,14 @@ void HelloWorld::titleDisplayCallback()
 }
 
 
-
+void HelloWorld::startGame(cocos2d::Ref* pSender)
+{
+    CCLOG("start game");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string in = Device::getOSVersion();
+    CCLOG("os %s",in.c_str());
+#endif
+}
 void HelloWorld::startGameWithParams(cocos2d::Ref* pSender,int l,int r,int b)
 {
     CCLOG("start game line:%d row:%d button:%d", l ,r ,b);
@@ -162,9 +144,9 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 //	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
 //    return;
 //#endif
-    
+
     Director::getInstance()->end();
-    
+
 #if (_TARGET_PLATFORM == _PLATFORM_IOS)
     exit(0);
 #endif
