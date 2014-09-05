@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := cocos2dcpp_shared
 
-LOCAL_MODULE_FILENAME := libcocos2dcpp
+LOCAL_MODULE_FILENAME := libFF
 
 define all-cpp-files
 $(patsubst jni/%,%, $(shell find $(LOCAL_PATH)/../../Classes/ $(LOCAL_PATH)/ -name "*.cpp"))  

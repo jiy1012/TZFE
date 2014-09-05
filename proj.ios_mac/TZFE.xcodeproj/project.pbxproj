@@ -123,6 +123,10 @@
 		D69DCCB0198CCC5C00162510 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69DCCAE198CCC5C00162510 /* GameScene.cpp */; };
 		D69DCCB1198CCC5C00162510 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69DCCAE198CCC5C00162510 /* GameScene.cpp */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		D6E7146919B5C71D009635F0 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E7146619B5C71D009635F0 /* Device.cpp */; };
+		D6E7146A19B5C71D009635F0 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E7146619B5C71D009635F0 /* Device.cpp */; };
+		D6E7146B19B5C71D009635F0 /* Device.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6E7146819B5C71D009635F0 /* Device.mm */; };
+		D6E7146C19B5C71D009635F0 /* Device.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6E7146819B5C71D009635F0 /* Device.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,6 +356,9 @@
 		D69DCCAE198CCC5C00162510 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		D69DCCAF198CCC5C00162510 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		D6E7146619B5C71D009635F0 /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
+		D6E7146719B5C71D009635F0 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		D6E7146819B5C71D009635F0 /* Device.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Device.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +428,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D6E7146519B5C71D009635F0 /* Device */,
 				D62463E11986A669009B8067 /* CommonConfig.h */,
 				D62463DA1986A506009B8067 /* DefinedBase.h */,
 				D62463DB1986A506009B8067 /* DWSScene.cpp */,
@@ -601,6 +609,17 @@
 				D688AF1019A4A16B008EEE90 /* mydraw.jpg */,
 			);
 			path = logo;
+			sourceTree = "<group>";
+		};
+		D6E7146519B5C71D009635F0 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				D6E7146619B5C71D009635F0 /* Device.cpp */,
+				D6E7146719B5C71D009635F0 /* Device.h */,
+				D6E7146819B5C71D009635F0 /* Device.mm */,
+			);
+			name = Device;
+			path = ../Classes/Device;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -860,7 +879,9 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				D6E7146919B5C71D009635F0 /* Device.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				D6E7146B19B5C71D009635F0 /* Device.mm in Sources */,
 				D69DCCB0198CCC5C00162510 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
@@ -872,6 +893,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69DCCB1198CCC5C00162510 /* GameScene.cpp in Sources */,
+				D6E7146C19B5C71D009635F0 /* Device.mm in Sources */,
+				D6E7146A19B5C71D009635F0 /* Device.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,

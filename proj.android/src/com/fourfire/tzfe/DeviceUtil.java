@@ -1,24 +1,16 @@
 package com.fourfire.tzfe;
+
 import android.os.Build;
-import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
+
+import android.content.Context;
 import android.telephony.TelephonyManager;
 
-public class DeviceUtil extends Activity {
-	
-    public static DeviceUtil deviceInstance = null;
+public class DeviceUtil{
     
-    public static Object getInstance(){  
-        if (deviceInstance == null){  
-        	deviceInstance = new DeviceUtil();  
-        }
-        return deviceInstance;  
-    }  
-    
-//	public static String getOSVersion(){
-//		return Build.VERSION.RELEASE;
-//	}
+	public static String getOSVersion(){
+		return Build.VERSION.RELEASE;
+	}
 	public static String getModel(){
 		return Build.MODEL;
 	}
@@ -31,19 +23,18 @@ public class DeviceUtil extends Activity {
 	public static String getBoard(){
 		return Build.BOARD;
 	}
-
-	
-	/**
-	 * Role:获取当前设置的电话号码
-	 */
-
-	public void getOSVersion() {
-//        SIMCardInfo siminfo = new SIMCardInfo(DeviceUtil.this);
-//        return siminfo.getNativePhoneNumber();
-//		return "ok";
-		Log.e("Himi","okokokokok");
+	public static String getPhoneNumber(){
+		String phoneNumber = "";
+		TelephonyManager telephonyManager;
+		Context ctx = MainApplication.getInstance();
+		telephonyManager = (TelephonyManager) ctx
+                .getSystemService(Context.TELEPHONY_SERVICE);
+		phoneNumber = telephonyManager.getLine1Number();
+		Log.i("TelephonyManager", "phoneNumber:"+phoneNumber);
+		String IMEI = telephonyManager.getSubscriberId();
+		Log.i("TelephonyManager", "IMEI:"+IMEI);
+		String DeviceId = telephonyManager.getDeviceId();
+		Log.i("TelephonyManager", "getDeviceId:"+DeviceId);
+		return phoneNumber;
 	}
-
-	
-	
 }
