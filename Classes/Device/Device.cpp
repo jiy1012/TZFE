@@ -24,6 +24,15 @@ string Device::getOSVersion()
     return ret;
 }
 
+string Device::getPhoneNumber()
+{
+    string _ret=_getStaticStrFromJava("com/fourfire/tzfe/DeviceUtil","getPhoneNumber");
+    string ret = "";
+    ret.append(_ret);
+    CCLOG("PhoneNumber: %s",ret.c_str());
+    return ret;
+}
+
 
 std::string Device::_getStaticStrFromJava(const char* jclz, const char* jfunc)
 {
