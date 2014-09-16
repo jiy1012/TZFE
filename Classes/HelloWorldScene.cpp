@@ -4,6 +4,7 @@
 
 #include "GameScene.h"
 #include "Device.h"
+#include "NetController.h"
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
@@ -126,6 +127,7 @@ void HelloWorld::titleDisplayCallback()
 void HelloWorld::startGame(cocos2d::Ref* pSender)
 {
     CCLOG("start game");
+    NetController::shared()->send("game=class");
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string in = Device::getOSVersion();
     std::string nu = Device::getPhoneNumber();

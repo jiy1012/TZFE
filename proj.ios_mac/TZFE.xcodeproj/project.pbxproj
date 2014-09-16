@@ -62,6 +62,8 @@
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		D60A21C419C6DD4B007D712C /* NetController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A21C219C6DD4B007D712C /* NetController.cpp */; };
+		D60A21C519C6DD4B007D712C /* NetController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60A21C219C6DD4B007D712C /* NetController.cpp */; };
 		D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
 		D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62463DB1986A506009B8067 /* DWSScene.cpp */; };
 		D66B3C8219B090DE004E6B7C /* 6_6_4.png in Resources */ = {isa = PBXBuildFile; fileRef = D66B3C7F19B090DE004E6B7C /* 6_6_4.png */; };
@@ -321,6 +323,8 @@
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D60A21C219C6DD4B007D712C /* NetController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetController.cpp; path = ../Classes/NetController.cpp; sourceTree = "<group>"; };
+		D60A21C319C6DD4B007D712C /* NetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetController.h; path = ../Classes/NetController.h; sourceTree = "<group>"; };
 		D62463DA1986A506009B8067 /* DefinedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinedBase.h; path = ../Classes/DefinedBase.h; sourceTree = "<group>"; };
 		D62463DB1986A506009B8067 /* DWSScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DWSScene.cpp; path = ../Classes/DWSScene.cpp; sourceTree = "<group>"; };
 		D62463DC1986A506009B8067 /* DWSScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSScene.h; path = ../Classes/DWSScene.h; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				D69DCCAE198CCC5C00162510 /* GameScene.cpp */,
 				D69DCCAF198CCC5C00162510 /* GameScene.h */,
+				D60A21C219C6DD4B007D712C /* NetController.cpp */,
+				D60A21C319C6DD4B007D712C /* NetController.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -879,6 +885,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D62463DD1986A506009B8067 /* DWSScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				D60A21C419C6DD4B007D712C /* NetController.cpp in Sources */,
 				D6E7146919B5C71D009635F0 /* Device.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				D6E7146B19B5C71D009635F0 /* Device.mm in Sources */,
@@ -897,6 +904,7 @@
 				D6E7146A19B5C71D009635F0 /* Device.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				D62463DE1986A506009B8067 /* DWSScene.cpp in Sources */,
+				D60A21C519C6DD4B007D712C /* NetController.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 			);
