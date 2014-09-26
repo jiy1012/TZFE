@@ -9,6 +9,7 @@
 
 //system
 #include "cocos2d.h"
+#include "extensions/cocos-ext.h"
 //#include "cocos-ext.h"
 
 USING_NS_CC;

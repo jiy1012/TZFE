@@ -10,7 +10,7 @@
 #define __TZFE__NetController__
 
 #include "CommonConfig.h"
-#include "HttpRequest.h"
+#include <network/HttpRequest.h>
 #include <network/HttpClient.h>
 #include <json/document.h>  
 using namespace network;
