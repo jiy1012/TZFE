@@ -7,11 +7,11 @@ LOCAL_MODULE := cocos2dcpp_shared
 LOCAL_MODULE_FILENAME := libFF
 
 define all-cpp-files
-$(patsubst jni/%,%, $(shell find $(LOCAL_PATH)/../../Classes/ $(LOCAL_PATH)/ -name "*.cpp"))  
+$(patsubst jni/%,%, $(shell find $(LOCAL_PATH)/../../Classes $(LOCAL_PATH) -name "*.cpp"))
 endef
 
 define all-cpp-dir
-	$(patsubst jni/%,$(LOCAL_PATH)/%, $(shell find $(LOCAL_PATH)/../../Classes/ -type d -not -wholename '*.svn*'))  
+	$(patsubst jni/%,$(LOCAL_PATH)/%, $(shell find $(LOCAL_PATH)/../../Classes/ -type d -not -wholename '*.svn*'))
 endef
 
 LOCAL_SRC_FILES := $(call all-cpp-files)
